@@ -1,0 +1,187 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Olivia Luna - Live Connect</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom smooth green glow animation for profile picture */
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 22px rgba(16, 185, 129, 0.55), 0 0 45px rgba(16, 185, 129, 0.25);
+            }
+            50% {
+                box-shadow: 0 0 32px rgba(16, 185, 129, 0.85), 0 0 60px rgba(16, 185, 129, 0.4);
+            }
+        }
+        .profile-glow {
+            animation: pulseGlow 2.8s infinite ease-in-out;
+        }
+        /* Clean tap highlight on mobile devices */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white min-h-[100dvh] w-full flex flex-col items-center justify-center p-4 sm:p-6 selection:bg-emerald-500 selection:text-white relative overflow-x-hidden">
+
+    <!-- Ambient Background Glow Effects -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-80 sm:w-[28rem] h-80 sm:h-[28rem] bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="fixed bottom-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Main Responsive Card Container (Adapts seamlessly to mobile & desktop screens) -->
+    <main class="w-full max-w-[420px] sm:max-w-md bg-slate-900/85 backdrop-blur-xl border border-slate-800/90 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col items-center text-center relative z-10 transition-all duration-300">
+        
+        <!-- 1. Top Header Text & Animated Downward Arrow -->
+        <div class="flex flex-col items-center mb-5 sm:mb-6">
+            <span class="px-5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/35 text-emerald-400 font-semibold text-sm sm:text-base tracking-wider uppercase shadow-sm">
+                Live Connect
+            </span>
+            <!-- Animated Downward Arrow -->
+            <div class="mt-2.5 text-emerald-400 animate-bounce text-xl sm:text-2xl">
+                <i class="fa-solid fa-arrow-down"></i>
+            </div>
+        </div>
+
+        <!-- 2. Clickable Profile Picture with Glowing Green Ring -->
+        <a 
+            href="https://auctionr.org/4/eba8ad870548d0d12c50c4c604cdc199" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Connect with Olivia Luna"
+            class="relative group mb-4 block cursor-pointer focus:outline-none"
+        >
+            <!-- Outer Green Glow Aura -->
+            <div class="absolute -inset-1.5 bg-gradient-to-r from-emerald-500 via-green-400 to-emerald-600 rounded-full blur opacity-80 group-hover:opacity-100 transition duration-500"></div>
+            
+            <!-- Profile Picture Frame -->
+            <div class="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 bg-slate-900 ring-4 ring-emerald-500 profile-glow overflow-hidden">
+                <img 
+                    id="profileImage"
+                    src="https://i.postimg.cc/V5TBsbzh/image.jpg" 
+                    onerror="handleImageFallback(this)"
+                    alt="Olivia Luna" 
+                    class="w-full h-full object-cover rounded-full transition-transform duration-300 group-hover:scale-105"
+                >
+            </div>
+
+            <!-- Glowing Green Online Indicator Dot -->
+            <span class="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 flex h-5 w-5 sm:h-6 sm:w-6" title="Online Now">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-80"></span>
+                <span class="relative inline-flex rounded-full h-5 w-5 sm:h-6 sm:w-6 bg-emerald-500 border-2 border-slate-900 shadow-[0_0_12px_#10b981]"></span>
+            </span>
+        </a>
+
+        <!-- 3. Profile Name with Verified Badge -->
+        <a 
+            href="https://auctionr.org/4/eba8ad870548d0d12c50c4c604cdc199" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="mb-1.5 flex items-center justify-center gap-2 group cursor-pointer"
+        >
+            <h1 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-emerald-300 transition-colors tracking-tight">
+                Olivia Luna
+            </h1>
+            <i class="fa-solid fa-circle-check text-emerald-400 text-lg sm:text-xl" title="Verified Profile"></i>
+        </a>
+        
+        <!-- Active Online Status Subtitle -->
+        <p class="text-emerald-400 text-sm sm:text-base font-medium mb-7 sm:mb-8 flex items-center justify-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse inline-block shadow-[0_0_8px_#34d399]"></span>
+            Online Now
+        </p>
+
+        <!-- 4. Three Call-to-Action Buttons (All linked to your direct URL) -->
+        <div class="w-full flex flex-col gap-3.5 sm:gap-4">
+            
+            <!-- Option 1: Video Call -->
+            <a 
+                href="https://auctionr.org/4/eba8ad870548d0d12c50c4c604cdc199" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-full py-3.5 sm:py-4 px-5 rounded-2xl bg-gradient-to-r from-emerald-600 to-green-500 hover:from-emerald-500 hover:to-green-400 text-white font-semibold text-base sm:text-lg shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/45 active:scale-[0.98] transition-all duration-200 flex items-center justify-between group cursor-pointer"
+            >
+                <div class="flex items-center gap-3.5">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/20 flex items-center justify-center text-white shrink-0">
+                        <i class="fa-solid fa-video text-base sm:text-lg"></i>
+                    </div>
+                    <span class="text-left">Video Call</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-white/90 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+
+            <!-- Option 2: Voice Call -->
+            <a 
+                href="https://auctionr.org/4/eba8ad870548d0d12c50c4c604cdc199" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-full py-3.5 sm:py-4 px-5 rounded-2xl bg-slate-800/90 hover:bg-slate-800 border border-slate-700/80 hover:border-blue-500/60 text-white font-semibold text-base sm:text-lg shadow-md active:scale-[0.98] transition-all duration-200 flex items-center justify-between group cursor-pointer"
+            >
+                <div class="flex items-center gap-3.5">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-phone-volume text-base sm:text-lg"></i>
+                    </div>
+                    <span class="text-left">Voice Call</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-400 group-hover:translate-x-1 transition-all"></i>
+            </a>
+
+            <!-- Option 3: Direct Chat -->
+            <a 
+                href="https://auctionr.org/4/eba8ad870548d0d12c50c4c604cdc199" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-full py-3.5 sm:py-4 px-5 rounded-2xl bg-slate-800/90 hover:bg-slate-800 border border-slate-700/80 hover:border-purple-500/60 text-white font-semibold text-base sm:text-lg shadow-md active:scale-[0.98] transition-all duration-200 flex items-center justify-between group cursor-pointer"
+            >
+                <div class="flex items-center gap-3.5">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-comment-dots text-base sm:text-lg"></i>
+                    </div>
+                    <span class="text-left">Direct Chat</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-purple-400 group-hover:translate-x-1 transition-all"></i>
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- Image Fallback Handler (Ensures clean display across all networks) -->
+    <script>
+        let fallbackStep = 0;
+        function handleImageFallback(img) {
+            fallbackStep++;
+            if (fallbackStep === 1) {
+                img.src = "https://i.postimg.cc/V5TBsbzh/photo.jpg";
+            } else if (fallbackStep === 2) {
+                img.src = "https://i.postimg.cc/V5TBsbzh/1.jpg";
+            } else {
+                img.onerror = null;
+                img.src = "https://placehold.co/300x300/064e3b/34d399?text=Olivia+Luna";
+            }
+        }
+    </script>
+</body>
+</html>
+```
